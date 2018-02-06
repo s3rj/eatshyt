@@ -1,0 +1,91 @@
+body {
+	overflow-x: hidden;
+	background: green;
+	font-size: 35px;
+	color: #fff;
+	font-family: 'Andika', sans-serif;
+	padding-top: 5%;
+}
+
+p {
+	font-size: 0.4em;
+}
+
+/*Title Splash*/
+.titleSplash {
+	padding-left: 5%;
+	margin-bottom: 3%;
+}
+
+h1 {
+	font-family: 'Amatic SC', cursive;
+	font-size: 5em;
+}
+
+h2 {
+	font-family: 'Amatic SC', cursive;
+	font-size: 1.5em;
+}
+
+/*Search element*/
+#searchElement {
+	width: 50%;
+	padding: 2% 5%;
+	margin-bottom: 3%;
+	background: rgba(0, 0, 0, 0.1);
+	border-right: solid 10px white;
+	border-bottom: solid 10px white;
+	border-top: solid 10px white;
+	border-radius: 0 100px 100px 0;
+	transition: all 0.2s;
+}
+
+#searchBar {
+	font-size: 1em;
+	color: #fff;
+	padding: 0.5em;
+	width: 70%;
+	background: rgba(255, 255, 255, 0.3);
+	border: solid 5px rgba(255, 255, 255, 1);
+	border-radius: 3em 0 0 3em;
+}
+
+::placeholder {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+#submit {
+	padding: 0.5em;
+	font-size: 1em;
+	color: white;
+	background: rgba(255, 255, 255, 0.3);
+	border: solid 5px rgba(255, 255, 255, 1);
+	border-radius: 0 3em 3em 0;
+}
+
+#collapseSearch {
+	float: right;
+	font-size: 2em;
+}
+
+/*Side bar*/
+#sideBar {
+	float: right;
+	width: 20%;
+	margin-right: 5%;
+}
+
+/*Footer*/
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+h6 {
+	font-family: 'Amatic SC', cursive;
+	font-size: 0.5em;
+	padding: 0.5em 1em;
+	text-align: right;
+}

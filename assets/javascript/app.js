@@ -1,0 +1,4 @@
+$("#collapseSearch").on("click", function () 
+{
+	
+});
