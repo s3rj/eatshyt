@@ -1,13 +1,15 @@
 body {
 	overflow-x: hidden;
-	background: green;
+	/*background: green;*/
+	animation: colorRotate 60s infinite; 
 	font-size: 35px;
 	color: #fff;
-	font-family: 'Andika', sans-serif;
+	font-family: 'Amatic SC', cursive;
 	padding-top: 5%;
 }
 
 p {
+	font-family: 'Andika', sans-serif;
 	font-size: 0.4em;
 }
 
@@ -18,17 +20,16 @@ p {
 }
 
 h1 {
-	font-family: 'Amatic SC', cursive;
 	font-size: 5em;
 }
 
 h2 {
-	font-family: 'Amatic SC', cursive;
 	font-size: 1.5em;
 }
 
 /*Search element*/
 #searchElement {
+	position: relative;
 	width: 50%;
 	padding: 2% 5%;
 	margin-bottom: 3%;
@@ -84,8 +85,26 @@ footer {
 }
 
 h6 {
-	font-family: 'Amatic SC', cursive;
 	font-size: 0.5em;
 	padding: 0.5em 1em;
 	text-align: right;
+}
+
+/*background animation*/
+@keyframes colorRotate {
+	0%, 100% {
+		background-color: #189aa8;
+	}
+	20% {
+		background-color: #900c3f;
+	}
+	40% {
+		background-color: #5a7443;
+	}
+	60% {
+		background-color: #78586f;
+	}
+	80% {
+		background-color: #f9a824;
+	}
 }
