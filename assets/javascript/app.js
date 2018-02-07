@@ -14,7 +14,7 @@ function searchSlide ()
 	if (searchCollapse === false)
 	{
 		searchCollapse = true;
-		$("#searchElement").animate({left: '-90%'}, 200);
+		$("#searchElement").animate({left: '-93%'}, 200);
 		$(".titleSplash").fadeTo("slow", 0);
 		$("#collapseSearch").css({transform: 'rotate(180deg)'});
 	} 
@@ -26,6 +26,22 @@ function searchSlide ()
 	}
 };
 
+function footerSlide ()
+{
+	if (footerCollapse === false)
+	{
+		$("#footerMenu").html("<h6>© 2018 &nbsp - &nbsp <i class='fas fa-angle-double-up'></i></h6>");
+		$("#creditMenu").show();
+		footerCollapse = true;
+	}
+	else
+	{
+		$("#footerMenu").html("<h6>© 2018 &nbsp - &nbsp <i class='fas fa-angle-double-down'></i></h6>");
+		$("#creditMenu").hide()
+		footerCollapse = false;
+	}
+}
+
 //site progression/////////////////////////
 
 $("#collapseSearch").on("click", function () 
@@ -35,14 +51,5 @@ $("#collapseSearch").on("click", function ()
 
 $("#footerMenu").on("click", function ()
 {
-	if (footerCollapse === false)
-	{
-	$("#footerMenu").html("<h6>© 2018 &nbsp - &nbsp <i class='fas fa-angle-double-up'></i></h6>");
-	footerCollapse = true;
-	}
-	else
-	{
-		$("#footerMenu").html("<h6>© 2018 &nbsp - &nbsp <i class='fas fa-angle-double-down'></i></h6>");
-		footerCollapse = false;
-	}
+	footerSlide();
 });

@@ -25,6 +25,7 @@ p {
 
 h1 {
 	font-size: 5em;
+	animation: textPulse 4s infinite;
 }
 
 h2 {
@@ -104,6 +105,22 @@ footer {
 	display: inline-block;
 	background: rgba(0, 0, 0, 0.3);
 	text-align: right;
+	user-select: none;
+}
+
+#creditMenu {
+	display: none;
+	position: fixed;
+	right: 0;
+	bottom: 1em;
+	background: rgba(0, 0, 0, 0.3);
+	text-align: center;
+	user-select: none;
+	padding: 0 0.5em;
+}
+
+.groupMember {
+	border-bottom: solid 1px #fff;
 }
 
 h6 {
@@ -163,5 +180,16 @@ h6 {
 	}
 	80% {
 		background-color: #f9a824;
+	}
+}
+
+@keyframes textPulse {
+	0%, 100% {
+		text-shadow: 0 0 50px #FFF, 0 0 50px #FFF;
+		opacity: 1;
+	}
+	50% {
+		text-shadow: none;
+		opacity: 0.5;
 	}
 }
