@@ -11,44 +11,51 @@
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Andika" rel="stylesheet">
 </head>
-
 <body>
-
-<div id="sideBar">
-	<h2>Recent Searches</h2>
-	<br>
-	<p>Search 1</p>
-	<br>
-	<p>Search 2</p>
-	<br>
-	<p>Search 3</p>
-</div>
-
-<div class="titleSplash">
-<h1>seeShyt</h1>
-<h2>Find out if people think the band you like sucks</h2>
-</div>
-
-<div id="searchWrapper">
-	<div id="searchElement">
-		<form>
-			<input type="text" id="searchBar" placeholder="What band do you want to see?">
-			<button id="submit" type="submit"><i class="fas fa-search"></i></button>
-		</form>
-		<div id="collapseSearch">
-			<i class="fas fa-angle-double-right"></i>
-		</div>
-	</div>
-</div>
-
-<div class="titleSplash">
-	<h2>Hey! What's up!</h2>
-	<br>
-	<p>Are you hungry? Good. Hungry for knowledge? Even better. Blah blah blah about what the search is and how to do it and how to interpret it</p>
-</div>
 
 <div id="contentDisplay">
 	<div id="contentHeadline">
+	</div>
+	<div id="contentMap">
+		<div id="testButton">Test Here!</div>
+	</div>
+</div>
+
+<div class="bodyWrapper">
+	<div class="contentWrap">
+
+		<!-- "Header" -->
+		<div class="titleSplash">
+			<h1>seeShyt</h1>
+			<h2>Are you about to see a shyt band? Find out what your peers think?</h2>
+		</div>
+
+		<!-- Web Search Bar -->
+		<div class="searchSplash">
+			<form class="webSearch">
+				<input type="text" id="searchBar" placeholder="What band do you want to see?" autocomplete="off">
+
+				<button id="submit" type="submit"><i class="fas fa-search"></i></button>
+			</form>
+
+			<div id="collapseSearch">
+				<i class="fas fa-angle-double-right"></i>
+			</div>
+		</div>
+
+		<!-- Initial site explainer -->
+		<div class="titleSplash">
+			<h2>Hey! What's up!</h2>
+			<p>Blah blah blah Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque deserunt totam, recusandae dolor iusto fugiat itaque cupiditate dicta ducimus, sapiente dolores repudiandae illo commodi magnam facilis voluptate! Et, temporibus, nisi!</p>
+		</div>
+	</div>
+
+	<!-- Side Bar -->
+	<div class="asideWrap">
+		<h2>Recent Searches:</h2>
+
+		<div class="asideContent">
+		</div>
 	</div>
 </div>
 
@@ -70,8 +77,8 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="assets/javascript/app.js"></script>
+	<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD-d2navTuPoVDJXPWB7ZEp_OmJrM4z_iI&callback=initMap'></script>
 </footer>
 
 </body>
-
 </html>
