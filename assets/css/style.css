@@ -157,6 +157,10 @@ h2 {
 	font-size: 1.5em;
 }
 
+h3 {
+	font-size: 1em;
+}
+
 .asideWrap h2 {
 	border-top: solid 5px #fff;
 	border-bottom: solid 5px #fff;
@@ -172,6 +176,10 @@ p {
 h6 {
 	font-size: 0.5em;
 	padding: 0.5em 1em;
+}
+
+#contentMap {
+	color: #000;
 }
 
 /*animations*/
