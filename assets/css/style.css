@@ -98,11 +98,22 @@ form {
 
 	#contentHeadline {
 		width: 80%;
+		height: 2em;
+		overflow: auto;
 		padding: 0 10%;
-		display: inline-flex;
+		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
 		border-bottom: solid 10px #fff;
+	}
+
+	.headlineDisplay {
+		width: 100%;
+		padding: 1em;
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 
 	#contentHeadline h1 {
@@ -115,9 +126,17 @@ form {
 
 	#contentMap {
 		margin: 1.25% auto;
-		height: 80%;
+		height: 70%;
 		width: 95%;
 		border: solid 5px #fff;
+	}
+
+	#contentButtons {
+		border-top: solid 10px #fff;
+		width: 100%;
+		display: inline-flex;
+		justify-content: space-evenly;
+		user-select: none;
 	}
 
 /*footer elements*/
@@ -151,6 +170,8 @@ h1 {
 	font-size: 5em;
 	margin-bottom: 1%;
 	animation: textPulse 4s infinite;
+	-webkit-animation: textPulse 4s infinite;
+	-moz-animation: textPulse 4s infinite;
 }
 
 h2 {
@@ -162,13 +183,15 @@ h3 {
 }
 
 .asideWrap h2 {
-	border-top: solid 5px #fff;
-	border-bottom: solid 5px #fff;
-	border-radius: 25px 0 0 25px;
+/*	border-top: solid 5px #fff;*/
+	margin-bottom: 1%;
+	border-bottom: solid 2px #fff;
+/*	border-radius: 25px 0 0 25px;*/
 }
 
 p {
-	margin: 1em;
+	margin-top: 1em;
+	margin-right: 50%;
 	font-family: 'Andika', sans-serif;
 	font-size: 0.4em;
 }
@@ -185,6 +208,28 @@ h6 {
 /*animations*/
 
 @keyframes textPulse {
+	0%, 100% {
+		text-shadow: 0 0 50px #FFF, 0 0 50px #FFF;
+		opacity: 1;
+	}
+	50% {
+		text-shadow: none;
+		opacity: 0.5;
+	}
+}
+
+@-webkit-keyframes textPulse {
+	0%, 100% {
+		text-shadow: 0 0 50px #FFF, 0 0 50px #FFF;
+		opacity: 1;
+	}
+	50% {
+		text-shadow: none;
+		opacity: 0.5;
+	}
+}
+
+@-moz-keyframes textPulse {
 	0%, 100% {
 		text-shadow: 0 0 50px #FFF, 0 0 50px #FFF;
 		opacity: 1;
@@ -255,5 +300,45 @@ h6 {
 	@media (max-width: 1415px) {
 		body {
 			font-size: 25px;
+		}
+	}
+
+	@media (max-width: 1015px) {
+		#searchBar {
+			font-size: 0.75em;
+		}
+
+		#submit {
+			font-size: 0.75em;
+		}
+
+		#collapseSearch {
+			font-size: 1em;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.asideWrap {
+			display: none;
+		}
+
+		.contentWrap {
+			width: 100%;
+		}
+
+		h1 {
+			font-size: 4em;
+		}
+
+		#contentHeadline h1 {
+			font-size: 1em;
+		}
+
+		#contentHeadline h2 {
+			font-size: 0.5em;
+		}
+
+		#contentMap {
+			height: 80%;
 		}
 	}

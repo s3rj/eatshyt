@@ -1,5 +1,19 @@
 //seeShyt////////////////////////////////////
 
+//initialize firebase
+var config = {
+	apiKey: "AIzaSyAVg1NiVgI8KMeUd7pOUgDFsEFnH0anqdg",
+	authDomain: "tourstalkr.firebaseapp.com",
+	databaseURL: "https://tourstalkr.firebaseio.com",
+	projectId: "tourstalkr",
+	storageBucket: "tourstalkr.appspot.com",
+	messagingSenderId: "123700408796"
+}
+
+firebase.initializeApp(config);
+
+database = firebase.database();
+
  ////////////////////////////////////////////
 //variable bank/////////////////////////////
 
@@ -26,6 +40,8 @@ var markerIcon = 0;
 var coords; //testing add marker function
 var contentString; //content string for info window
 var infowindow; //info window for google marker
+
+var searchTerm; //firebase storage object for user search
 
  ///////////////////////////////////////////
 //function bank////////////////////////////
@@ -83,17 +99,14 @@ function bitAPI (artist)
 	{
 		if (response.length < 1)
 		{
-			$("#contentHeadline").empty();
-			$("#contentHeadline").append("<h1>No upcoming shows dude");
+			$("#contentHeadline").prepend("<h1>No upcoming shows dude");
 		}
 		else
 		{
 		bitResponse = response;
 		artistName = $("<h1>").text(bitResponse["0"].lineup["0"]);
-		$("#contentHeadline").empty();
-		$("#contentHeadline").append("<h1>" + bitResponse["0"].lineup["0"] + "</h1><h2>" + bitResponse.length + " upcoming shows.");
+		$("#contentHeadline").prepend("<div class='headlineDisplay'><h1><img src = 'assets/images/customMarkers/" + markerIcon + ".png' />" + bitResponse["0"].lineup["0"] + "</h1><h2>" + bitResponse.length + " upcoming shows.</div>");
 		latLongPull();
-		console.log(latLongArray)
 		bubbleSort(latLongArray);
 		}
 	}).then(markerSet);
@@ -185,12 +198,30 @@ function addMarker () {
 	});
 }
 
+//clearing map of markers
 function mapClear () {
-	// latLongArray = [];
 	for (var i = 0; i < markerArray.length; i++) {
 		markerArray[i].setMap(null);
 	};
 	markerArray = [];
+}
+
+//form validation before search happens
+function formValidate () {
+	if ($("#searchBar").val().trim() == "") 
+	{
+		$("#errorMessage").html("<h2><i class='fas fa-arrow-up'></i><i class='fas fa-arrow-up'></i> YOU GOTTA PUT IN A BAND TO SEARCH FOR <i class='fas fa-arrow-up'></i><i class='fas fa-arrow-up'></i>");
+		return false;
+	}
+	else
+	{
+		searchSlide();
+		markerIcon++;
+		inputArtist = $("#searchBar").val().trim();
+		$(".webSearch").children("input").val("");
+		database.ref().push(inputArtist);	//pushing searchterm to firebase
+		bitAPI(inputArtist);	
+	}
 }
 
  ///////////////////////////////////////////
@@ -208,8 +239,17 @@ $("#footerMenu").on("click", function ()
 
 $("#submit").on("click", function(event) {
 	event.preventDefault();
-	searchSlide();
-	markerIcon++;
-	inputArtist = $("#searchBar").val().trim();
-	bitAPI(inputArtist);
+	formValidate();
 })
+
+$("#clearMapBtn").on("click", function () {
+	latLongArray = [];
+	mapClear();
+	markerIcon = 0;
+	$(".webSearch").children("input").val("");
+	$("#contentHeadline").empty();
+})
+
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+	$(".asideContent").append("<h2>" + childSnapshot.val());
+});
