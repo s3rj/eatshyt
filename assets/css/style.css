@@ -83,6 +83,11 @@ form {
 	margin-top: 10%;
 }
 
+.asideContent {
+	display: flex;
+	flex-direction: column;
+}
+
 /*Post search content display*/
 	#contentDisplay {
 		position: absolute;
@@ -145,7 +150,7 @@ form {
 		bottom: 0;
 		width: 100%;
 		text-align: right;
-		background: rgba(0, 0, 0, 0.3);
+		background: rgba(0, 0, 0, 0.6);
 	}
 
 	#creditMenu {
@@ -153,10 +158,11 @@ form {
 		position: fixed;
 		right: 0;
 		bottom: 1em;
-		background: rgba(0, 0, 0, 0.3);
+		background: rgba(0, 0, 0, 0.6);
 		text-align: center;
 		user-select: none;
 		padding: 0 0.5em;
+		z-index: 2;
 	}
 
 	.groupMember {
@@ -193,7 +199,7 @@ p {
 	margin-top: 1em;
 	margin-right: 50%;
 	font-family: 'Andika', sans-serif;
-	font-size: 0.4em;
+	font-size: 0.5em;
 }
 
 h6 {

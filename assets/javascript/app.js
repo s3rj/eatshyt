@@ -14,6 +14,12 @@ firebase.initializeApp(config);
 
 database = firebase.database();
 
+//loading firebase into array
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+	// $(".asideContent").prepend("<h2>" + childSnapshot.val());
+	tempDataArray.push(childSnapshot.val());
+});
+
  ////////////////////////////////////////////
 //variable bank/////////////////////////////
 
@@ -42,6 +48,8 @@ var contentString; //content string for info window
 var infowindow; //info window for google marker
 
 var searchTerm; //firebase storage object for user search
+
+var tempDataArray = []; //array storing search history
 
  ///////////////////////////////////////////
 //function bank////////////////////////////
@@ -103,6 +111,7 @@ function bitAPI (artist)
 		}
 		else
 		{
+		database.ref().push(inputArtist);	//pushing searchterm to firebase
 		bitResponse = response;
 		artistName = $("<h1>").text(bitResponse["0"].lineup["0"]);
 		$("#contentHeadline").prepend("<div class='headlineDisplay'><h1><img src = 'assets/images/customMarkers/" + markerIcon + ".png' />" + bitResponse["0"].lineup["0"] + "</h1><h2>" + bitResponse.length + " upcoming shows.</div>");
@@ -219,7 +228,6 @@ function formValidate () {
 		markerIcon++;
 		inputArtist = $("#searchBar").val().trim();
 		$(".webSearch").children("input").val("");
-		database.ref().push(inputArtist);	//pushing searchterm to firebase
 		bitAPI(inputArtist);	
 	}
 }
@@ -227,6 +235,21 @@ function formValidate () {
  ///////////////////////////////////////////
 //site progression/////////////////////////
 
+//loading firebase recent searches//
+$(document).ready(function () {
+	database.ref().orderByChild("dateAdded").limitToLast(10).on("child_added", function(snapshot) {
+		var recentSearchList = snapshot.val();
+		$(".asideContent").prepend("<div class='recentSearchResult'>" + recentSearchList);
+});
+});
+
+//recent search result click sending value to search bar
+$(document).on("click", ".recentSearchResult", function() {
+	var recentSearchVar = $(this).html().toUpperCase();
+	$("#searchBar").val(recentSearchVar);
+});
+
+//menu slide mechanics
 $("#collapseSearch").on("click", function () 
 {
 	searchSlide();
@@ -237,11 +260,13 @@ $("#footerMenu").on("click", function ()
 	footerSlide();
 });
 
+//api call and result display
 $("#submit").on("click", function(event) {
 	event.preventDefault();
 	formValidate();
 })
 
+//Clearing map data
 $("#clearMapBtn").on("click", function () {
 	latLongArray = [];
 	mapClear();
@@ -250,6 +275,10 @@ $("#clearMapBtn").on("click", function () {
 	$("#contentHeadline").empty();
 })
 
-database.ref().on("child_added", function(childSnapshot, prevChildKey) {
-	$(".asideContent").append("<h2>" + childSnapshot.val());
-});
+//test area
+
+// $(document).on("click", marker, function() {
+// 	var testVar = $(this).html()
+// 	console.log(testVar);
+// });
+
